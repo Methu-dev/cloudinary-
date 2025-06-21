@@ -2,6 +2,8 @@
 import { useState } from 'react'
 import './App.css'
 import axios from 'axios'
+import { CiDark } from 'react-icons/ci'
+import { MdDarkMode } from 'react-icons/md'
 
 function App() {
 
@@ -31,10 +33,16 @@ function App() {
     }
   }
 
+
+  const [isDark, setDark] = useState(false);
+  const toggoleTheme =()=>{
+    setDark(!isDark)
+  }
   return (
     <>
-      
-      <div className="p-6">
+      <button onClick={toggoleTheme}>{isDark ? (<CiDark className='text-3xl'/>):(<MdDarkMode className='text-3xl'/>)}</button>
+    <div className={isDark ? "dark" : ""}>
+        <div className="bg-white text-black dark:bg-gray-900 dark:text-white p-6">
       <h2 className="text-center text-3xl font-bold mb-6">Upload Image to Cloudinary</h2>
 
       <div className="max-w-md mx-auto rounded-lg overflow-hidden md:max-w-xl">
@@ -79,6 +87,7 @@ function App() {
           </div>
         </div>
   
+    </div>
     </div>
 
       
